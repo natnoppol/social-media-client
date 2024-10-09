@@ -26,8 +26,18 @@
   "jest": {
     "transform": {
       "^.+\\.js$": "babel-jest"
-    }
+    },
+    "setupFiles": ["./jest.setup.js"]
   },
-  "moduleFileExtensions": ["js", "mjs", "cjs", "jsx", "json", "node"]
+  "moduleFileExtensions": [
+    "js",
+    "mjs",
+    "cjs",
+    "jsx",
+    "json",
+    "node"
+  ]
 }
+
+
 

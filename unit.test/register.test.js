@@ -1,6 +1,6 @@
-import { register } from './src/js/api/auth/register.js';
-import { apiPath } from './src/js/api/constants.js';
-import { headers } from './src/js/api/headers.js';
+import { register } from '../src/js/api/auth/register.js';
+import { apiPath } from '../src/js/api/constants.js';
+import { headers } from '../src/js/api/headers.js';
 
 describe('register', () => {
     beforeEach(() => {
