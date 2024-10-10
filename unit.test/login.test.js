@@ -19,7 +19,7 @@ describe('login', () => {
         fetch.mockResponseOnce(JSON.stringify(mockResponse));
         const profile = await login('johndoe@example.com', 'password123');
 
-        expect(fetch).toHaveBeenCalledWith(`${apiPath}/social/auth/login`, {
+        expect(fetch).toHaveBeenCalledWith(`${apiPath}auth/login`, {
             method: 'post',
             body: JSON.stringify({
               email: 'johndoe@example.com',
