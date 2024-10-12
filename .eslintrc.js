@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     env: {
         browser: true,
         es2021: true,
@@ -13,6 +13,6 @@ export default {
         sourceType: 'module',
     },
     rules: {
-        'import/no-commonjs': 'off', 
+        // Customize your ESLint rules here
     },
 };
