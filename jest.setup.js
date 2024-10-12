@@ -1,17 +1,17 @@
-require('jest-fetch-mock').enableMocks();
+// require('jest-fetch-mock').enableMocks();
 
-import 'jest-fetch-mock';
-fetchMock.enableMocks();
+// import 'jest-fetch-mock';
+// fetchMock.enableMocks();
 
-global.window = {
-  location: {
-    reload: jest.fn(),
-  },
-};
+// global.window = {
+//   location: {
+//     reload: jest.fn(),
+//   },
+// };
 
-global.document = {
-  createElement: jest.fn(() => ({ innerHTML: '' })),
-};
+// global.document = {
+//   createElement: jest.fn(() => ({ innerHTML: '' })),
+// };
 
 
 
