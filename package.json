@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "sass src/scss:dist/css",
-    "start": "sass --watch src/scss:dist/css & live-server"
+    "start": "sass --watch src/scss:dist/css & live-server",
+    "lint": "eslint .",
+    "lint:fix": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "keywords": [],
   "author": "Noroff",
