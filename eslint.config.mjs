@@ -2,27 +2,27 @@ import globals from 'globals';
 import pluginJs from '@eslint/js';
 
 export default [
-	{ languageOptions: { globals: globals.browser } },
-	pluginJs.configs.recommended,
-	{
-		env: {
-			browser: true,
-			es2021: true,
-			node: true
-		},
-		extends: [ 
-			'eslint:recommended', 
-			'prettier'
-		],
-		files: ['**/*.js'],
-		parserOptions: {
-			ecmaVersion: 'latest',
-			sourceType: 'module',
-		},
-		rules: {
-			'no-unused-vars': 'warn', 
-      		'prettier/prettier': ['error', { endOfLine: 'auto' }],
-			'no-console':'error'
-		},
-	},
+  {
+    files: ['src/**/*.js'],
+    ignores: [
+      'node_modules/*', // ignore its content
+    ],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+      parserOptions: {
+        ecmaVersion: 2021,
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      'comma-dangle': ['error', 'always-multiline'],
+      'no-console': 'error',
+      'no-unused-vars': 'warn',
+      indent: ['error', 2],
+      quotes: ['error', 'single'],
+    },
+  },
+  pluginJs.configs.recommended,
 ];
