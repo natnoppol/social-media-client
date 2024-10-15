@@ -12,5 +12,7 @@ export default {
 		sourceType: 'module',
 	},
 	plugins: ['react'],
-	rules: {},
+	rules: {
+		'no-console': 'error',
+	},
 };
