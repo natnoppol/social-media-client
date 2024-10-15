@@ -1,18 +1,16 @@
 export default {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
-  extends: [
-    "eslint:recommended",
-    "plugin:prettier/recommended", // Integrate Prettier with ESLint
-  ],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: "module",
-  },
-  rules: {
-    "import/no-commonjs": "off",
-  },
+	env: {
+		browser: true,
+		es2021: true,
+	},
+	extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
+	parserOptions: {
+		ecmaFeatures: {
+			jsx: true,
+		},
+		ecmaVersion: 'latest',
+		sourceType: 'module',
+	},
+	plugins: ['react'],
+	rules: {},
 };
