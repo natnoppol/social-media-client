@@ -18,7 +18,7 @@ export default [
     },
     rules: {
       'comma-dangle': ['error', 'always-multiline'],
-      'no-console': 'warn',
+      'no-console': 'error',
       'no-unused-vars': 'warn',
       indent: ['error', 2],
       quotes: ['error', 'single'],
