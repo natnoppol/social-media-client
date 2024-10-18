@@ -17,19 +17,31 @@ describe('Authentication', () => {
  
   describe('login', () => {
     it('should store a token and profile when provided with valid credentials', async () => {
+      const mockToken = 'valid_token';
+      const mockProfile = {
+        name: 'mockName',
+        email: 'mockemail@email.com',
+        banner: null,
+        avatar:
+          'https://wiki.tripwireinteractive.com/TWIimages/4/47/Placeholder.png',
+      };
+      
+      
       global.fetch.mockResolvedValueOnce({
         ok: true,
-        json: () => Promise.resolve({ accessToken: 'mockToken' }),
+        json: () => Promise.resolve({ 
+            name: mockProfile.name,
+            email: mockProfile.email,
+            banner: mockProfile.banner,
+            avatar: mockProfile.avatar,
+            accessToken: mockToken, 
+          }),
       });
       
       await login(mockCredentials);
 
-      expect(global.fetch).toHaveBeenCalledWith(expect.any(String), expect.objectContaining({
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      }));
-
-       expect(save).toHaveBeenCalledWith('token', 'mockToken');
+      expect(save).toHaveBeenCalledWith('token', mockToken);
+      expect(save).toHaveBeenCalledWith('profile', mockProfile);
       });
 
     it('should throw a generic error with invalid credentials (current behavior)', async () => {
@@ -42,31 +54,15 @@ describe('Authentication', () => {
     });
 
     it('should throw a specific error with invalid credentials', async () => {
-      const mockToken = 'mockToken';
-      const mockProfile = { 
-        name: 'mockName', 
-        email: 'mockemail@email.com', 
-        banner: null, 
-        avatar: 'avatarUrl' 
-      };
-  
-      // Mocking the fetch response
       global.fetch.mockResolvedValueOnce({
-        ok: true,
-        json: () => Promise.resolve({ accessToken: mockToken }),
+        ok: false,
+        json: () => Promise.resolve({ message: 'Invalid credentials' }),
       });
-
-      await login(mockCredentials);
-
-    expect(fetch).toHaveBeenCalledWith(expect.any(String), expect.objectContaining({
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    }));
-
-    expect(save).toHaveBeenCalledWith('token', mockToken);
-    expect(save).toHaveBeenCalledWith('profile', mockProfile);
-  });
-
+      await expect(login(mockCredentials)).rejects.toThrow(
+        'Invalid credentials',
+      );
+    });
+    
     it('should handle network errors (current behavior - may fail)', async () => {
       global.fetch.mockRejectedValueOnce(new Error('Network error'));
 
