@@ -13,8 +13,7 @@
 		"prepare": "husky && husky install",
 		"test": "jest",
 		"cypress:open": "cypress open",
-		"cypress:run": "cypress run",
-		"test:e2e": "start-server-and-test start-server http://localhost:8080 cypress:run"
+		"cypress:run": "cypress run"
 	},
 	"keywords": [],
 	"author": "Noroff",
