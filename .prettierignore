@@ -1,5 +1,5 @@
 # Ignore artifacts:
 build
-coverage
-node_modules/
-README.md
+public
+node_modules
+dist
