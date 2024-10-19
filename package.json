@@ -6,12 +6,15 @@
 	"scripts": {
 		"build": "sass src/scss:dist/css",
 		"start": "sass --watch src/scss:dist/css",
-		"startLive": "live-server",
+		"start-server": "live-server",
 		"lint": "eslint . --fix --max-warnings=0",
 		"lint:fix": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
 		"format": "prettier . --write",
 		"prepare": "husky && husky install",
-		"test": "jest"
+		"test": "jest",
+		"cypress:open": "cypress open",
+		"cypress:run": "cypress run",
+		"test:e2e": "start-server-and-test start-server http://localhost:8080 cypress:run"
 	},
 	"keywords": [],
 	"author": "Noroff",
@@ -22,8 +25,11 @@
 		"@babel/preset-env": "^7.25.8",
 		"@eslint/js": "^9.12.0",
 		"babel-jest": "^29.7.0",
-		"eslint": "^9.12.0",
+		"cypress": "^13.15.0",
+		"eslint": "^9.13.0",
 		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-cypress": "^4.0.0",
+		"eslint-plugin-jest": "^28.8.3",
 		"eslint-plugin-prettier": "^5.2.1",
 		"globals": "^15.11.0",
 		"husky": "^9.1.6",
@@ -32,7 +38,8 @@
 		"lint-staged": "^15.2.10",
 		"live-server": "^1.2.2",
 		"prettier": "3.3.3",
-		"sass": "^1.54.8"
+		"sass": "^1.54.8",
+		"start-server-and-test": "^2.0.8"
 	},
 	"dependencies": {
 		"bootstrap-dark-5": "^1.1.3"
